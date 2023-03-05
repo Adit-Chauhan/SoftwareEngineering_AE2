@@ -1,4 +1,4 @@
-package CourseClasses;
+package CourseWork;
 
 import java.util.TreeSet;
 
@@ -10,7 +10,7 @@ public class StudentCourseRequirements extends Course {
 
 	//TODO: Answer Q, maybe add more constructors
 	// Q: >1 constructor required (with accompanying getters/setters?) if we don't have all these details??) Or do we not want anyone to modify the specific course once it is created?
-	public StudentCourse(String inputCourseName, String inputCourseDesc, TimetableDate inputTime, TreeSet<String> inputRequiredSkills){
+	public StudentCourseRequirements(String inputCourseName, String inputCourseDesc, TimetableDate inputTime, TreeSet<String> inputRequiredSkills){
 		super(inputCourseName, inputCourseDesc);
 		
 		this.courseID = totalStudentCourseIDs++;
@@ -33,13 +33,12 @@ public class StudentCourseRequirements extends Course {
 		this.teacher = newTeacher;
 	} // TODO: Update implementation if changed to Teacher object
 
-
-	
-	
 	// Returns total list of requirements
 	public TreeSet<String> getSkillsRequired(){
 		return requiredSkills;
 	}
+	
+	public static 
 
 
 

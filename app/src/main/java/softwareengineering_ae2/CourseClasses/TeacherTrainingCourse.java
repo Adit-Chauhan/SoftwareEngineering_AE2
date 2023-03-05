@@ -1,4 +1,4 @@
-package CourseClasses;
+package CourseWork;
 
 import java.util.TreeSet;
 

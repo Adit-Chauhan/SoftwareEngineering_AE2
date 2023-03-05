@@ -1,4 +1,4 @@
-package CourseClasses;
+package CourseWork;
 
 private abstract class Course{
 	private int courseID;
