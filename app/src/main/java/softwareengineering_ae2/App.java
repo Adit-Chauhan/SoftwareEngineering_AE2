@@ -3,12 +3,29 @@
  */
 package softwareengineering_ae2;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import softwareengineering_ae2.datastore.DataStore;
+
+import java.io.IOException;
+
+
 public class App {
     public String getGreeting() {
         return "Hello World!";
     }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        //System.out.println(new App().getGreeting());
+        DataStore v = null;
+        try {
+            v = new DataStore();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            System.out.println("Tree Head " +v.treeHead());
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
