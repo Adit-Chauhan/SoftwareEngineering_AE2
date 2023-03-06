@@ -6,38 +6,34 @@ import java.util.List;
 import java.util.stream.Stream;
 
 
-public class TeacherStore {
-    static private DataStore database;
+public class TeacherStore extends BaseStore<MockTeacher> {
     static TeacherStore inst;
     public static final int Unassigned = 1;
     public static final int Assigned = 1 << 1;
     public static final int Trained = 1 << 2;
     public static final int Untrained = 1 << 3;
     private TeacherStore() throws IOException {
-        database = DataStore.getInstance();
+        super();
+        registerUser(this);
     }
     public static TeacherStore getInstance() throws IOException {
         if(inst == null) inst = new TeacherStore();
         return inst;
     }
 
-    public List<MockTeacher> getAllTeachers(){
-        return database.data().getTeachers();
-    }
-
     public Iterator<MockTeacher> getFilteredTeachersOr(int filterSettings){
         Stream<MockTeacher> v =  Stream.empty();
-        if ((filterSettings & Unassigned) == Unassigned) Stream.concat(v,getAllTeachers().stream().filter(s -> !s.assigned));
-        if((filterSettings & Assigned) == Assigned)      Stream.concat(v,getAllTeachers().stream().filter(s->s.assigned));
-        if((filterSettings & Trained) == Trained)        Stream.concat(v,getAllTeachers().stream().filter(s-> s.trained));
-        if((filterSettings & Untrained) == Untrained)    Stream.concat(v,getAllTeachers().stream().filter(s-> !s.trained));
+        if ((filterSettings & Unassigned) == Unassigned) Stream.concat(v,getData().stream().filter(s -> !s.assigned));
+        if((filterSettings & Assigned) == Assigned)      Stream.concat(v,getData().stream().filter(s->s.assigned));
+        if((filterSettings & Trained) == Trained)        Stream.concat(v,getData().stream().filter(s-> s.trained));
+        if((filterSettings & Untrained) == Untrained)    Stream.concat(v,getData().stream().filter(s-> !s.trained));
 
         v = v.distinct(); // Remove common
         return v.iterator();
     }
 
     public Iterator<MockTeacher> getFilteredTeachersAnd(int filterSettings){
-        Stream<MockTeacher> v = getAllTeachers().stream();
+        Stream<MockTeacher> v = getData().stream();
         if ((filterSettings & Unassigned) == Unassigned) v=v.filter(s -> !s.assigned);
 
         if((filterSettings & Assigned) == Assigned)      v=v.filter(s->s.assigned);
@@ -47,5 +43,17 @@ public class TeacherStore {
         if((filterSettings & Untrained) == Untrained)    v=v.filter(s-> !s.trained);
 
         return v.iterator();
+    }
+
+    @Override
+    public List<MockTeacher> getData() {
+        if (localData == null)localData = data().getTeachers();
+
+        return localData;
+    }
+
+    @Override
+    public void update() {
+        data().setTeachers(localData);
     }
 }

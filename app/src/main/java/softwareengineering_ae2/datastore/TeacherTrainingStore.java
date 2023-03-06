@@ -1,25 +1,35 @@
 package softwareengineering_ae2.datastore;
 
-import java.io.IOException;
-import java.util.Iterator;
-import java.util.List;
-import java.util.stream.Stream;
+import softwareengineering_ae2.CourseClasses.TeacherTrainingCourse;
 
-public class TeacherTrainingStore {
-    static private DataStore database;
+import java.io.IOException;
+import java.util.List;
+public class TeacherTrainingStore extends BaseStore<TeacherTrainingCourse> {
     static TeacherTrainingStore inst;
     public static final int HasSpace = 1;
     public static final int Full = 1 << 1;
     private TeacherTrainingStore() throws IOException {
-        database = DataStore.getInstance();
+        super();
+        registerUser(this);
     }
     public static TeacherTrainingStore getInstance() throws IOException {
         if(inst == null) inst = new TeacherTrainingStore();
         return inst;
     }
 
-    public List<CourseWork.TeacherTrainingCourse> getAllTeacherCourses(){
-        return database.data().getTeacherCourse();
+    public List<TeacherTrainingCourse> getAllTeacherCourses(){
+        return data().getTeacherCourse();
+    }
+
+    @Override
+    public List<TeacherTrainingCourse> getData() {
+        if (localData == null) localData = data().getTeacherCourse();
+        return localData;
+    }
+
+    @Override
+    public void update() {
+        data().setTeacherCourse(localData);
     }
 /*
  * TODO: Include if implemented in Courses
