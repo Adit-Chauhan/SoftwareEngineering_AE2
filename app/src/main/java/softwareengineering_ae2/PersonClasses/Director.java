@@ -1,4 +1,4 @@
-package CourseWork;
+package softwareengineering_ae2.PersonClasses;
 
 public class Director extends Staff {
 

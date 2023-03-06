@@ -1,4 +1,4 @@
-package CourseWork;
+package softwareengineering_ae2.PersonClasses;
 
 abstract class Person {
 	private String name;
