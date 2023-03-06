@@ -15,17 +15,7 @@ public class App {
     }
 
     public static void main(String[] args) {
-        //System.out.println(new App().getGreeting());
-        DataStore v = null;
-        try {
-            v = new DataStore();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        try {
-            System.out.println("Tree Head " +v.treeHead());
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
-        }
+        System.out.println(new App().getGreeting());
+
     }
 }

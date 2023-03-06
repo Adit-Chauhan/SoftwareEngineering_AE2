@@ -1,4 +1,4 @@
-package CourseWork;
+package softwareengineering_ae2.CourseClasses;
 
 import java.util.TreeSet;
 
@@ -38,7 +38,6 @@ public class StudentCourseRequirements extends Course {
 		return requiredSkills;
 	}
 	
-	public static 
 
 
 

@@ -1,6 +1,8 @@
-package CourseWork;
+package softwareengineering_ae2.CourseClasses;
 
-private abstract class Course{
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+
+abstract class Course{
 	private int courseID;
 	private String nameOfCourse;
 	private String courseDescription;
