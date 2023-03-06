@@ -1,53 +1,73 @@
 package softwareengineering_ae2.datastore;
 
+import CourseWork.TeacherTrainingCourse;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
-import java.nio.file.*;
-import java.util.Iterator;
-import java.util.Map;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
 
-import static softwareengineering_ae2.datastore.attribute.*;
+// Placeholder Teacher Class
+class MockTeacher{
+    String name;
+    boolean assigned;
+    boolean trained;
+}
+// Placeholder Student Course Class
+class MockSCR{
+    boolean assigned;
+}
 
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
-class MockPerson {
-    private String name;
-    private String job;
+class FullData {
+    List<MockSCR> studentCourse;
+    List<CourseWork.TeacherTrainingCourse> teacherCourse;
+    List<MockTeacher> teachers;
 
-    String get_cont(){
-        return "Person:: Name : " + name + " Job : " + job;
-    }
+     List<MockSCR> getStudentCourse() {
+        return studentCourse;
+     }
+
+     void setStudentCourse(List<MockSCR> studentCourse) {
+        this.studentCourse = studentCourse;
+     }
+
+     List<TeacherTrainingCourse> getTeacherCourse() {
+        return teacherCourse;
+     }
+
+     void setTeacherCourse(List<TeacherTrainingCourse> teacherCourse) {
+        this.teacherCourse = teacherCourse;
+     }
+
+     List<MockTeacher> getTeachers() {
+        return teachers;
+     }
+
+     void setTeachers(List<MockTeacher> teachers) {
+        this.teachers = teachers;
+     }
 }
-@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
-class MockCourse{
-    private String name;
-    private String desc;
 
-    String get_cont(){
-        return "Course:: Name: " + name + " Desc: " + desc;
+
+class DataStore {
+    static private Path database;
+    static private FullData fullDatabase;
+    private static DataStore inst;
+     private DataStore() throws IOException {
+        if(database == null) database = Paths.get("data/data.json");
+
+        if(fullDatabase == null) fullDatabase = new ObjectMapper().readValue(database.toFile(), FullData.class);
     }
-}
 
-enum attribute {
-    Assigned,
-    Trained;
-
-}
-
-public class DataStore {
-    static protected Path database;
-    static private JsonNode fullTree;
-
-    public DataStore() throws IOException {
-        database = Paths.get("data/data.json");
-        System.out.println("Path " + database.toAbsolutePath());
-        fullTree = new ObjectMapper().readTree(database.toFile());
+    static DataStore getInstance()throws IOException {
+         if(inst == null) inst = new DataStore();
+         return inst;
     }
-    public JsonNode treeHead() throws JsonProcessingException {
-        Iterator<Map.Entry<String, JsonNode>> it = fullTree.fields();
-        return null;
+
+    FullData data(){
+         return fullDatabase;
     }
 }
