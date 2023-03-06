@@ -2,6 +2,7 @@ package softwareengineering_ae2.CourseClasses;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 abstract class Course{
 	private int courseID;
 	private String nameOfCourse;

@@ -1,7 +1,9 @@
-package CourseWork;
+package softwareengineering_ae2.CourseClasses;
+
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
 import java.util.TreeSet;
-
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class TeacherTrainingCourse extends Course {
 	private static int totalTeacherTrainingCourseIDs = 0;
 	private final int maxCourseCapacity;
