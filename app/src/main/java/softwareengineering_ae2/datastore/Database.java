@@ -1,6 +1,6 @@
 package softwareengineering_ae2.datastore;
 
-import CourseWork.TeacherTrainingCourse;
+import softwareengineering_ae2.CourseClasses.TeacherTrainingCourse;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -23,7 +23,7 @@ class MockSCR{
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 class FullData {
     List<MockSCR> studentCourse;
-    List<CourseWork.TeacherTrainingCourse> teacherCourse;
+    List<TeacherTrainingCourse> teacherCourse;
     List<MockTeacher> teachers;
 
      List<MockSCR> getStudentCourse() {
@@ -52,22 +52,45 @@ class FullData {
 }
 
 
-class DataStore {
+class Database {
     static private Path database;
     static private FullData fullDatabase;
-    private static DataStore inst;
-     private DataStore() throws IOException {
+    private static Database inst;
+    private static ObjectMapper objMap;
+
+    private static List<DatabaseOperations<?>> users;
+     private Database() throws IOException {
         if(database == null) database = Paths.get("data/data.json");
 
-        if(fullDatabase == null) fullDatabase = new ObjectMapper().readValue(database.toFile(), FullData.class);
+        if(objMap == null) objMap = new ObjectMapper();
+
+        if(fullDatabase == null) fullDatabase = objMap.readValue(database.toFile(), FullData.class);
+
+        // Make sure to write data on exit
+        Runtime.getRuntime().addShutdownHook(new Thread() {
+             public void run() {
+                 try {
+                     for(var user:users){
+                         user.update();
+                     }
+
+                     write();
+                 } catch (IOException e) { // TODO: More graceful exit
+                     e.printStackTrace();
+                 }}});
     }
 
-    static DataStore getInstance()throws IOException {
-         if(inst == null) inst = new DataStore();
+    static Database getInstance()throws IOException {
+         if(inst == null) inst = new Database();
          return inst;
     }
-
     FullData data(){
          return fullDatabase;
+    }
+    void registerUser(DatabaseOperations<?> user){
+         users.add(user);
+    }
+    void write() throws IOException {
+         objMap.writeValue(database.toFile(),fullDatabase);
     }
 }
