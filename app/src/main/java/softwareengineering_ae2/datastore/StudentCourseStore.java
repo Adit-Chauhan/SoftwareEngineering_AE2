@@ -13,6 +13,7 @@ public class StudentCourseStore extends BaseStore<MockSCR> {
         super();
         registerUser(this);
     }
+
     @Override
     public List<MockSCR> getData() {
         if(localData == null) localData = data().getStudentCourse();
@@ -22,6 +23,7 @@ public class StudentCourseStore extends BaseStore<MockSCR> {
     public void update() {
         data().setStudentCourse(localData);
     }
+
     public static StudentCourseStore getInstance() throws IOException {
         if(inst == null) inst = new StudentCourseStore();
         return inst;
