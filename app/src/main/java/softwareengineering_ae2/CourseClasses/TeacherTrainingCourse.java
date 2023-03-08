@@ -2,7 +2,7 @@ package softwareengineering_ae2.CourseClasses;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
-import java.util.TreeSet;
+import java.util.HashSet;
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class TeacherTrainingCourse extends Course {
 	private static int totalTeacherTrainingCourseIDs = 0;
@@ -10,15 +10,15 @@ public class TeacherTrainingCourse extends Course {
 
 	/*// TODO: Decide on if keep or not. NOT ON OG UML CLASS DIAGRAM
 	private int spacesLeft; 
-	private TreeSet<PartTimeTeachers> teacherTrainingAttendees;// TODO: Decide on if keep or not. NOT ON OG UML CLASS DIAGRAM
+	private HashSet<PartTimeTeachers> teacherTrainingAttendees;// TODO: Decide on if keep or not. NOT ON OG UML CLASS DIAGRAM
 	*/
 
 	private ArrayList<TimetableDate> trainingTimes;
-	private TreeSet<String> taughtSkillSet;
+	private HashSet<String> taughtSkillSet;
 
 	//TODO: Answer Q, maybe add more constructors
 	// Q: >1 constructor required (with accompanying getters/setters?) if we don't have all these details??) Or do we not want anyone to modify the specific course once it is created?	
-	public TeacherTrainingCourse(String inputCourseName, String inputCourseDesc, int inputMaxCapacity, ArrayList<TimetableDate> inputTrainingTimes, TreeSet<String> inputTaughtSkills){
+	public TeacherTrainingCourse(String inputCourseName, String inputCourseDesc, int inputMaxCapacity, ArrayList<TimetableDate> inputTrainingTimes, HashSet<String> inputTaughtSkills){
 		super(inputCourseName, inputCourseDesc);
 		this.courseID = totalTeacherTrainingCourseIDs++;
 		
@@ -44,7 +44,7 @@ public class TeacherTrainingCourse extends Course {
 	}
 	
 	// Returns list of skillsets taught in the teacher training course
-	public TreeSet<String> getTaughtSkillSet(){
+	public HashSet<String> getTaughtSkillSet(){
 		return taughtSkillSet;
 	}
 
