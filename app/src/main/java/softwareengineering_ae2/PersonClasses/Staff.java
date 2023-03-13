@@ -1,3 +1,4 @@
+package softwareengineering_ae2.PersonClasses;
 
 abstract class Staff extends Person{
 	private int id;
