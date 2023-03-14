@@ -1,40 +1,53 @@
 package softwareengineering_ae2.CourseClasses;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
-
 import java.util.HashSet;
 
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class StudentCourseRequirements extends Course {
 	private static int totalStudentCourseIDs = 0;
-	private PartTimeTeacher teacher; //@Justin: This was my (Lynette) question lol.  // DONE: Answer Q: Make a reference to a Teacher object instead? i.e how much information is required? // 
-							// DONE: ADIT:: I think we can it may prevent useless data duplication (that said i am not aware of the rules of when java will copy data)
+	private PartTimeTeacher teacher; 
 	private TimetableDate studentCourseDateTime;
-	private HashSet<String> requiredSkills; // A: The order of the skills isn't important - what is important is that these skills shouldn't be duplicated. ALthough maybe a hashSet mayindeed be better for retrieval? Q: ADIT, Just curious as to why did you use TreeSet is the order of skills important?
+	private HashSet<String> requiredSkills;
 
-	//TODO: Answer Q, maybe add more constructors
-	// Q: >1 constructor required (with accompanying getters/setters?) if we don't have all these details??) Or do we not want anyone to modify the specific course once it is created?
-	public StudentCourseRequirements(String inputCourseName, String inputCourseDesc, TimetableDate inputTime, HashSet<String> inputRequiredSkills){
-		super(inputCourseName, inputCourseDesc);
-		
-		this.courseID = totalStudentCourseIDs++;
-		this.studentCourseDateTime = inputTime;
-		this.requiredSkills = inputRequiredSkills;
+
+	// Simple constructor left in to add student course ID
+	public StudentCourseRequirements(){
+		this.courseID = totaStudentCourseIDs++;
 	}
 
+
+		/*	SETTERS	*/
+	// NOTE: Class also has setters for course name and description inherited from Course abstract class
+		
+	// Sets date time for the student course	
+	public void setRequiredSkills(HashSet<String> newRequiredSkills){
+		this.requiredSkills = newRequiredSkills;
+	} 
+		
+	// Sets date time for the student course	
+	public void setStudentCourseDateTime(TimetableDate newCourseDateTime){
+		this.studentCourseDateTime = newCourseDateTime;
+	} 
+
+	// Sets teacher assigned to teach the student course	
+	public void setTeacher(PartTimeTeacher newTeacher){
+		this.teacher = newTeacher;
+	} 
+
+
+
+		/*	GETTERS	*/
+	// NOTE: Class also has getters for course name, description and course ID, inherited from Course abstract class
 
 	// Getter for the date/time scheduled for the student course
 	public TimetableDate getTimetabledDate(){
 		return studentCourseDateTime;
 	}
 
-	// Getters and setters for teacher assigned to teach the student course	
+	// Gets teacher assigned to teach the student course	
 	public PartTimeTeacher getTeacher(){
 		return teacher;
-	} 
-	
-	public void setTeacher(PartTimeTeacher newTeacher){
-		this.teacher = newTeacher;
 	} 
 
 	// Returns total list of requirements
@@ -42,4 +55,8 @@ public class StudentCourseRequirements extends Course {
 		return requiredSkills;
 	}
 	
+	
+
+	
 }
+
