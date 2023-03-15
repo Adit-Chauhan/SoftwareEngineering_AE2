@@ -1,10 +1,7 @@
-package softwareengineering_ae2.CourseClasses;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
-@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
-public abstract class Course{
-	protected int courseID;
+abstract class Course{
+	private int courseID;
 	private String nameOfCourse;
 	private String courseDescription;
 	private String teacherSet;
@@ -25,8 +22,7 @@ public abstract class Course{
 	public int getCourseID(){
 		return courseID;
 	}
-
-
+	
 	// Return the name of the specific course
 	public String getCourseName(){
 		return nameOfCourse;

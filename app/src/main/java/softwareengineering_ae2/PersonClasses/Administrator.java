@@ -16,10 +16,16 @@ public class Administrator {
     ArrayList<StudentCourseRequirements> allStudentCourses;
     ArrayList<TeacherTrainingCourse> allTeacherTrainingCourses;
    
-    public void readStudentCourseInfo(){
-        
-
+       public void readStudentCourseInfo(){
+    	for (Course course : StudentCourseStore.getData()) {
+    		  String coursID = course.getCourseID();
+              int courseName = course.getCourseName();
+              int courseDescription = course.getCourseDescription();
+              int courseDate = StudentCourseRequirement.getTimetabledDate();
+              int coursePTTeacher = StudentCourseRequirement.getTeacher()
+    	}
     }
+
 
     public void readTeacherTrainingInfo(){
         //::ADIT:: What is this function doing?

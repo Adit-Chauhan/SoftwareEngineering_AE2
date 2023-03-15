@@ -1,5 +1,3 @@
-package softwareengineering_ae2.CourseClasses;
-import softwareengineering_ae2.TimetableDate.TimetableDate;
 
 import java.util.HashSet;
 
