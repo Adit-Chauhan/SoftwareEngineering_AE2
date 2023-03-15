@@ -6,8 +6,7 @@ private abstract class Course{
 	private String courseDescription;
 
 
-		/*    SETTERS    */
-	
+		/*    SETTERS    */	
 	// Sets the name of the specific course
 	public void setCourseName(String inputCourseName){
 		this.nameOfCourse = inputCourseName;
@@ -16,7 +15,6 @@ private abstract class Course{
 	public void setCourseDescription(String inputCourseDesc){
 		this.courseDescription = inputCourseDesc;
 	}
-
 
 		/*    GETTERS    */
 	// Return the courseID for the specific course
