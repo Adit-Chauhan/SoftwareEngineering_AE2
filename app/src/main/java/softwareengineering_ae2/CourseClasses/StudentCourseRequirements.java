@@ -1,19 +1,22 @@
 package softwareengineering_ae2.CourseClasses;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import softwareengineering_ae2.PersonClasses.Teacher;
+import softwareengineering_ae2.TimetableDate.TimetableDate;
+
 import java.util.HashSet;
 
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class StudentCourseRequirements extends Course {
 	private static int totalStudentCourseIDs = 0;
-	private PartTimeTeacher teacher; 
+	private Teacher teacher;
 	private TimetableDate studentCourseDateTime;
 	private HashSet<String> requiredSkills;
 
 
 	// Simple constructor left in to add student course ID
 	public StudentCourseRequirements(){
-		this.courseID = totaStudentCourseIDs++;
+		this.courseID = totalStudentCourseIDs++;
 	}
 
 
@@ -31,7 +34,7 @@ public class StudentCourseRequirements extends Course {
 	} 
 
 	// Sets teacher assigned to teach the student course	
-	public void setTeacher(PartTimeTeacher newTeacher){
+	public void setTeacher(Teacher newTeacher){
 		this.teacher = newTeacher;
 	} 
 
@@ -46,7 +49,7 @@ public class StudentCourseRequirements extends Course {
 	}
 
 	// Gets teacher assigned to teach the student course	
-	public PartTimeTeacher getTeacher(){
+	public Teacher getTeacher(){
 		return teacher;
 	} 
 
@@ -54,9 +57,7 @@ public class StudentCourseRequirements extends Course {
 	public HashSet<String> getSkillsRequired(){
 		return requiredSkills;
 	}
-	
-	
 
-	
+
 }
 

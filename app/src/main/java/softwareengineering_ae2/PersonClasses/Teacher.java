@@ -1,5 +1,7 @@
 package softwareengineering_ae2.PersonClasses;
 
+import softwareengineering_ae2.TimetableDate.TimetableDate;
+
 import java.util.ArrayList;
 
 public class Teacher extends Staff{

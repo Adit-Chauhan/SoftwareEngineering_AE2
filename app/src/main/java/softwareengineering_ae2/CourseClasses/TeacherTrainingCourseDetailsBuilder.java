@@ -1,5 +1,8 @@
 package softwareengineering_ae2.CourseClasses;
 
+import softwareengineering_ae2.TimetableDate.TimetableDate;
+
+import java.util.ArrayList;
 import java.util.HashSet;
 
 public class TeacherTrainingCourseDetailsBuilder implements CourseReqDetailsBuilder{
@@ -38,7 +41,8 @@ public class TeacherTrainingCourseDetailsBuilder implements CourseReqDetailsBuil
 	}
 	
 	// Adds maximum course capacity for the TeacherTrainingCourse object
-	public void addTeacherTrainingClassSize(int inputMaxCourseCapacity){
+	public void addTeacherTrainingClassSize(int inputMaxCourseCapacity){} //::ADIT:: This was just there but it does
+	  																      // the same thing as the method below it?
 	public void setTeacherTrainingClassSize(int inputMaxCourseCapacity){
 		this.teachingCourse.setTeacherTrainingClassSize(inputMaxCourseCapacity);
 	}

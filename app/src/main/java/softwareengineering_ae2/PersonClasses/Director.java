@@ -1,3 +1,9 @@
+package softwareengineering_ae2.PersonClasses;
+
+import softwareengineering_ae2.CourseClasses.StudentCourseRequirements;
+import softwareengineering_ae2.CourseClasses.StudentCourseRequirementsBuilder;
+import softwareengineering_ae2.TimetableDate.TimetableDate;
+
 import java.time.YearMonth;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -13,8 +19,8 @@ public class Director extends Staff {
 	public void addRequirments(StudentCourseRequirements s) {
 		Scanner r = new Scanner(System.in);
 		boolean t = true;
-		String courseName;
-		String courseDescription;
+		String courseName = null;
+		String courseDescription = null;
 		int year = 0;
 		int month = 0;
 		int date = 0;
@@ -95,9 +101,10 @@ public class Director extends Staff {
 		while(t) {
 			System.out.println("Please input the Skills required for this course. Please input end to terminate this step.");
 			skillInput = r.nextLine();
-			if(skillInput == "end") {
+			if(skillInput.equals("end")) {
 				break;
-			}if (skillInput == null) {
+			}
+			if (skillInput == null) {
 				System.out.println("Invalid value. Please entre a skill or end.");
 			}else {
 				skills.add(skillInput);

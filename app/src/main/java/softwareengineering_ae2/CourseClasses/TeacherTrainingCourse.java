@@ -1,6 +1,9 @@
 package softwareengineering_ae2.CourseClasses;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import softwareengineering_ae2.TimetableDate.TimetableDate;
+
+import java.util.ArrayList;
 import java.util.HashSet;
 
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
@@ -63,11 +66,13 @@ public class TeacherTrainingCourse extends Course {
 		this.teacherSet = name;
 	}
 
+	public int getID() {
+		return totalTeacherTrainingCourseIDs;
+	}
 
 
 
-	
-		/* TODO: DETERMINE IF NEEDED */
+	/* TODO: DETERMINE IF NEEDED */
 	/*
 	// Methods for adding/removing part time teachers to the attendees set
 	// Return remaining spaces left for the teacher training course
