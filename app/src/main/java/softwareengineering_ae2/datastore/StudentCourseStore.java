@@ -41,6 +41,7 @@ public class StudentCourseStore extends BaseStore<MockSCR> {
         Stream<MockSCR> v =  Stream.empty();
         if ((filterSettings & Unassigned) == Unassigned) Stream.concat(v, getData().stream().filter(s -> !s.assigned));
 
+        
         if((filterSettings & Assigned) == Assigned) Stream.concat(v,getData().stream().filter(s->s.assigned));
 
         v = v.distinct(); // Should not be possible in this case but for security
