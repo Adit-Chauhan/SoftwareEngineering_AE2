@@ -17,20 +17,21 @@ public class Administrator {
     ArrayList<TeacherTrainingCourse> allTeacherTrainingCourses;
    
        public void readStudentCourseInfo(){
-    	for (Course course : StudentCourseStore.getData()) {
-    		  String coursID = course.getCourseID();
-              int courseName = course.getCourseName();
-              int courseDescription = course.getCourseDescription();
-              int courseDate = StudentCourseRequirement.getTimetabledDate();
-              int coursePTTeacher = StudentCourseRequirement.getTeacher()
+           //::ADIT:: What is this function doing?
+           // It just reads the data and stores it in references on stack
+           // all this information cannot be accessed ...
+           for (StudentCourseRequirements course: StudentCourseStore.getData()) {
+    		  int coursID = course.getCourseID();
+              String courseName = course.getCourseName();
+              String courseDescription = course.getCourseDescription();
+              TimetableDate courseDate = course.getTimetabledDate();
+              Teacher coursePTTeacher = course.getTeacher();
     	}
     }
 
 
     public void readTeacherTrainingInfo(){
-        //::ADIT:: What is this function doing?
-        // It just reads the data and stores it in references on stack
-        // all this information cannot be accessed ...
+        //::ADIT:: Same problem as previous the references just get cleared when the scope ends
         for (TeacherTrainingCourse ttc : TeacherTrainingStore.getData()) {
             int ttcID = ttc.getID(); //::ADIT:: I made a getter for ID but ID is a static variable It will be same for all
                                     // responses

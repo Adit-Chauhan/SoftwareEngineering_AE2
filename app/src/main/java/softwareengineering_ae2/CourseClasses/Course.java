@@ -1,7 +1,7 @@
+package softwareengineering_ae2.CourseClasses;
 
-
-abstract class Course{
-	private int courseID;
+public abstract class Course{
+	protected int courseID;
 	private String nameOfCourse;
 	private String courseDescription;
 	private String teacherSet;
