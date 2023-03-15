@@ -3,18 +3,25 @@
  */
 package softwareengineering_ae2;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
+import softwareengineering_ae2.PersonClasses.Administrator;
+import softwareengineering_ae2.PersonClasses.Director;
 
 import java.io.IOException;
+import java.util.Scanner;
 
 
 public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
-
-    public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
-
+    public static void main(String[] args) throws IOException {
+        Scanner r = new Scanner(System.in);
+        System.out.println("are you a Class Director or Administrator");
+        var ans =  r.nextLine();
+        if(ans.equals("admin")){
+            Administrator admin = new Administrator();
+            admin.run();
+        }
+        if(ans.equals("director")){
+            Director director = new Director("",0,0,"");
+            director.addRequirments();
+        }
     }
 }

@@ -1,5 +1,8 @@
 package softwareengineering_ae2.PersonClasses;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 abstract class Person {
 	private String name;
 	private int age;

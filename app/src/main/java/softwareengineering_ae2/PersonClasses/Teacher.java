@@ -1,9 +1,11 @@
 package softwareengineering_ae2.PersonClasses;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import softwareengineering_ae2.TimetableDate.TimetableDate;
 
 import java.util.ArrayList;
 
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class Teacher extends Staff{
 	private int teacherID;
 	private int age;
