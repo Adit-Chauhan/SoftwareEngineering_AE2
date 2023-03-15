@@ -1,7 +1,8 @@
 package main.java.softwareengineering_ae2.PersonClasses;
 import main.java.softwareengineering_ae2.CourseClasses.Course;
 import main.java.softwareengineering_ae2.TimetableDate.TimetableDate;
-import softwareengineering_ae2.PersonClasses.Teacher;
+import main.java.softwareengineering_ae2.CourseClasses.TeacherTrainingCourse;
+import main.java.softwareengineering_ae2.PersonClasses.Teacher;
 import java.util.ArrayList;
 public class Administrator {
     int AdminID;
@@ -9,20 +10,9 @@ public class Administrator {
     ArrayList<StudentCourse> allStudentCourses;
     ArrayList<TeacherTrainingCourses> allTeacherTrainingCourses;
    
-<<<<<<< HEAD
     public void readStudentCourseInfo(){
         
 
-=======
-       public void readStudentCourseInfo(){
-    	for (Course course : StudentCourseStore.getData()) {
-    		  String courseID = course.getCourseID();
-              int courseName = course.getCourseName();
-              int courseDescription = course.getCourseDescription();
-              int courseDate = StudentCourseRequirement.getTimetabledDate();
-              int coursePTTeacher = StudentCourseRequirement.getTeacher()
-    	}
->>>>>>> ccdda58be2effe411bfc00f2b471fac7bced2024
     }
 
     public void readTeacherTrainingInfo(){
@@ -61,17 +51,25 @@ public class Administrator {
                 } 
             }
             if(skillcount > 4){
-                course.setTeacher(t.getName())
+                course.setTeacher(t.getName());
             }
 
         }
 
     }
+    public void matchTeachersToTeacherTraining(softwareengineering_ae2.PersonClasses.Teacher teacher, ArrayList<TeacherTrainingCourse> trainingcourses){
+        for(TimetableDate time : teacher.getTeacherAvailability()){
+            for(TeacherTrainingCourse ttc : trainingcourses){
+                for(TimetableDate trianingtime : ttc.getTrainingTimes()){
+                    if(time.equals(trianingtime)){
+                        ttc.setTeacher(teacher.getName());
+                    }
+                }
+            }
+        }
 
 
 
-
-    public void matchTeachersToTeacherTraining(Teacher teacher, ArrayList<TeacherTrainingCourse> ttc){
 
     }
    
