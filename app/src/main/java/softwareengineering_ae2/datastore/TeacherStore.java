@@ -1,8 +1,11 @@
 package softwareengineering_ae2.datastore;
 
+import softwareengineering_ae2.CourseClasses.TeacherTrainingCourse;
+
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Stream;
 
 
@@ -14,8 +17,15 @@ public class TeacherStore extends BaseStore<MockTeacher> {
     public static final int Untrained = 1 << 3;
     private TeacherStore() throws IOException {
         super();
-        registerUser(this);
     }
+
+    @Override
+    protected void add(MockTeacher val) {
+ //       Optional<TeacherTrainingCourse> maybeCourse = localData.stream().filter(c -> c.getCourseID() == val.getCourseID()).findFirst();
+ //       maybeCourse.ifPresent(teacherTrainingCourse -> localData.remove(teacherTrainingCourse));
+ //       localData.add(val);
+    }
+
     public static TeacherStore getInstance() throws IOException {
         if(inst == null) inst = new TeacherStore();
         return inst;

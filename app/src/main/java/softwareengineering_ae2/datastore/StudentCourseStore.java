@@ -1,8 +1,11 @@
 package softwareengineering_ae2.datastore;
 
+import softwareengineering_ae2.CourseClasses.TeacherTrainingCourse;
+
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Stream;
 
 public class StudentCourseStore extends BaseStore<MockSCR> {
@@ -11,7 +14,13 @@ public class StudentCourseStore extends BaseStore<MockSCR> {
     public static final int Assigned = 1 << 1;
     private StudentCourseStore() throws IOException {
         super();
-        registerUser(this);
+    }
+
+    @Override
+    protected void add(MockSCR val) {
+        Optional<MockSCR> maybeCourse = localData.stream().filter(c -> c.getCourseID() == val.getCourseID()).findFirst();
+        maybeCourse.ifPresent(teacherTrainingCourse -> localData.remove(teacherTrainingCourse));
+        localData.add(val);
     }
 
     @Override

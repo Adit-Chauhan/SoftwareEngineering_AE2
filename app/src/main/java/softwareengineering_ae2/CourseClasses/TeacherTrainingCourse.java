@@ -8,6 +8,8 @@ public class TeacherTrainingCourse extends Course {
 	private static int totalTeacherTrainingCourseIDs = 0;
 	private final int maxCourseCapacity;
 
+
+	private int courseID;
 	/*// TODO: Decide on if keep or not. NOT ON OG UML CLASS DIAGRAM
 	private int spacesLeft; 
 	private TreeSet<PartTimeTeachers> teacherTrainingAttendees;// TODO: Decide on if keep or not. NOT ON OG UML CLASS DIAGRAM
@@ -48,6 +50,10 @@ public class TeacherTrainingCourse extends Course {
 		return taughtSkillSet;
 	}
 
+	@Override
+	public int getCourseID() {
+		return courseID;
+	}
 
 
 

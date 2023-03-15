@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 /*
@@ -64,7 +65,7 @@ class Database {
     private static ObjectMapper objMap;
 
     // Allow any subtype that implements DatabaseOperations
-    private static List<DatabaseOperations<?>> users;
+    private static List<BaseStore<?>> users;
      private Database() throws IOException {
         if(database == null) database = Paths.get("data/data.json");
 
@@ -72,6 +73,7 @@ class Database {
 
         if(fullDatabase == null) fullDatabase = objMap.readValue(database.toFile(), FullData.class);
 
+        if(users == null) users = new ArrayList<>();
         // Setup the Shutdown Hood
         Runtime.getRuntime().addShutdownHook(new Thread() {
              public void run() {
@@ -88,8 +90,9 @@ class Database {
     }
     // Make Database singleton
     // Make sure that only classes that implement DatabaseOperations can get an instance
-    static Database getInstance()throws IOException {
+    static Database getInstance(BaseStore<?> usr)throws IOException {
          if(inst == null) inst = new Database();
+         users.add(usr);
          return inst;
     }
 
@@ -99,7 +102,7 @@ class Database {
     }
 
     // Add new User to holders of current operations
-    void registerUser(DatabaseOperations<?> user){
+    void registerUser(BaseStore<?> user){
          users.add(user);
     }
 
