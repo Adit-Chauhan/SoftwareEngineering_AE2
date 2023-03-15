@@ -1,4 +1,4 @@
-package softwareengineering_ae2.CourseClasses;
+
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import java.util.HashSet;

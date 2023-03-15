@@ -1,6 +1,6 @@
-package CourseClasses;
 
-private abstract class Course{
+
+abstract class Course{
 	private int courseID;
 	private String nameOfCourse;
 	private String courseDescription;

@@ -1,4 +1,4 @@
-package softwareengineering_ae2.CourseClasses;
+import java.util.HashSet;
 
 public interface CourseReqDetailsBuilder{
 	
