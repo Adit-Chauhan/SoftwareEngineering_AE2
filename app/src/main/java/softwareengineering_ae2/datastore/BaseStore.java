@@ -3,28 +3,28 @@ package softwareengineering_ae2.datastore;
 import java.io.IOException;
 import java.util.List;
 
+// Base Class that is to be extended by all subclasses
+public abstract class BaseStore<T>  {
+    // Keep a static copy of Database class
+    static private Database database;
+    // Local copy of the database to prevent unnecessary R/W operations
+    List<T> localData;
 
-public abstract class BaseStore<T> implements DatabaseOperations<T> {
-   static private Database database;
-   List<T> localData;
-   protected BaseStore() throws IOException {
-       if((database == null)) database = Database.getInstance();
-   }
-
-    protected FullData data(){
-       return database.data();
+    // May need fixing
+    protected BaseStore() throws IOException {
+        if ((database == null)) database = Database.getInstance(this);
     }
-  protected void add(T val){
-     localData.add(val);
-   }
-  protected void registerUser(DatabaseOperations<?> usr){
-       database.registerUser(usr);
-   }
+
+    //  expose the data method of database class
+    protected FullData data() {
+        return database.data();
+    }
+    // Add new Value to local Database
+    protected abstract void add(T val);
+
+    // Get relevant Data
+    public abstract List<T> getData();
+
+    // Update main copy with local copies
+    public abstract void update();
 }
-
-
-interface DatabaseOperations<T>{
-    List<T> getData();
-    void update();
-
-};

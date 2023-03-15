@@ -4,14 +4,23 @@ import softwareengineering_ae2.CourseClasses.TeacherTrainingCourse;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
+
 public class TeacherTrainingStore extends BaseStore<TeacherTrainingCourse> {
     static TeacherTrainingStore inst;
     public static final int HasSpace = 1;
     public static final int Full = 1 << 1;
     private TeacherTrainingStore() throws IOException {
         super();
-        registerUser(this);
     }
+
+    @Override
+    protected void add(TeacherTrainingCourse val) {
+        Optional<TeacherTrainingCourse> maybeCourse = localData.stream().filter(c -> c.getCourseID() == val.getCourseID()).findFirst();
+        maybeCourse.ifPresent(teacherTrainingCourse -> localData.remove(teacherTrainingCourse));
+        localData.add(val);
+    }
+
     public static TeacherTrainingStore getInstance() throws IOException {
         if(inst == null) inst = new TeacherTrainingStore();
         return inst;

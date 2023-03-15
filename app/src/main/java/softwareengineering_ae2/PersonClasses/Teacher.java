@@ -10,6 +10,8 @@ public class Teacher extends Staff{
 	private String teacherName;
 	private String title;
 	boolean hasCompletedTraining;
+
+	boolean isAssigned;
 	ArrayList<TimetableDate> availableTimes;
 	ArrayList<String> teacherSkillSet;
 	
@@ -75,6 +77,12 @@ public class Teacher extends Staff{
 	public void setTeacherSkillSet(ArrayList<String> teacherSkillSet) {
 		this.teacherSkillSet = teacherSkillSet;
 	}
-	
-	
+
+	public boolean isAssigned() {
+		return isAssigned;
+	}
+
+	public void setAssigned(boolean assigned) {
+		isAssigned = assigned;
+	}
 }
