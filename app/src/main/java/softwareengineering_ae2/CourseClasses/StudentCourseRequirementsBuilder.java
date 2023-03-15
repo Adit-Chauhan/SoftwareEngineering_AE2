@@ -1,7 +1,7 @@
 package softwareengineering_ae2.CourseClasses;
 import java.util.HashSet;
 
-public StudentCourseRequirementsBuilder implements CourseReqDetailsBuilder{
+public class StudentCourseRequirementsBuilder implements CourseReqDetailsBuilder{
 	StudentCourseRequirements studentCourse; 
 
 	// Constructor for this builder. Creates a new StudentCourseRequirements object & assigns it an ID
