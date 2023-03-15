@@ -9,25 +9,39 @@ public class Administrator {
     ArrayList<StudentCourse> allStudentCourses;
     ArrayList<TeacherTrainingCourses> allTeacherTrainingCourses;
    
+<<<<<<< HEAD
     public void readStudentCourseInfo(){
         
 
+=======
+       public void readStudentCourseInfo(){
+    	for (Course course : StudentCourseStore.getData()) {
+    		  String courseID = course.getCourseID();
+              int courseName = course.getCourseName();
+              int courseDescription = course.getCourseDescription();
+              int courseDate = StudentCourseRequirement.getTimetabledDate();
+              int coursePTTeacher = StudentCourseRequirement.getTeacher()
+    	}
+>>>>>>> ccdda58be2effe411bfc00f2b471fac7bced2024
     }
-    
 
-
-
-
-    
     public void readTeacherTrainingInfo(){
-
+        for (TeacherTrainingCourse ttc : TeacherTrainingStore.getData()) {
+            int ttcID = ttc.getID();
+            int tthcClassSize = ttc.getTainingClassSize();
+            ArrayList<TimetableDate> ttcTimes = ttc.getTrainingTimes();
+            HashSet<String> ttcSkills = ttc=getTaughtSkillSet();       
+        }
     }
 
-
-
-    
     public void readPartTimeTeacherInfo(){
-
+      for (Teacher t : TeacherStore.getData()) {
+            String tName = t.getName();
+            boolean tTrainingsCompleted = t.getTrainingCompletedStatus(); 
+            ArrayList<TimetableDate> tAvailability = t.getTeacherAvailability();
+            ArrayList<String> tSkillset = t.getSkillset();
+            
+        }
     }
 
 
