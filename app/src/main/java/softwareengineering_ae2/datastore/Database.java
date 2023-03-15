@@ -1,8 +1,10 @@
 package softwareengineering_ae2.datastore;
 
+import softwareengineering_ae2.CourseClasses.StudentCourseRequirements;
 import softwareengineering_ae2.CourseClasses.TeacherTrainingCourse;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import softwareengineering_ae2.PersonClasses.Teacher;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -16,27 +18,18 @@ import java.util.List;
 *
 * */
 // Placeholder Teacher Class
-class MockTeacher{
-    String name;
-    boolean assigned;
-    boolean trained;
-}
-// Placeholder Student Course Class
-class MockSCR{
-    boolean assigned;
-}
 
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 class FullData {
-    List<MockSCR> studentCourse;
+    List<StudentCourseRequirements> studentCourse;
     List<TeacherTrainingCourse> teacherCourse;
-    List<MockTeacher> teachers;
+    List<Teacher> teachers;
 
-     List<MockSCR> getStudentCourse() {
+     List<StudentCourseRequirements> getStudentCourse() {
         return studentCourse;
      }
 
-     void setStudentCourse(List<MockSCR> studentCourse) {
+     void setStudentCourse(List<StudentCourseRequirements> studentCourse) {
         this.studentCourse = studentCourse;
      }
 
@@ -48,11 +41,11 @@ class FullData {
         this.teacherCourse = teacherCourse;
      }
 
-     List<MockTeacher> getTeachers() {
+     List<Teacher> getTeachers() {
         return teachers;
      }
 
-     void setTeachers(List<MockTeacher> teachers) {
+     void setTeachers(List<Teacher> teachers) {
         this.teachers = teachers;
      }
 }
