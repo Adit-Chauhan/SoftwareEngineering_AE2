@@ -10,10 +10,16 @@ public class Administrator {
     ArrayList<StudentCourse> allStudentCourses;
     ArrayList<TeacherTrainingCourses> allTeacherTrainingCourses;
    
-    public void readStudentCourseInfo(){
-        
-
+       public void readStudentCourseInfo(){
+    	for (Course course : StudentCourseStore.getData()) {
+    		  String coursID = course.getCourseID();
+              int courseName = course.getCourseName();
+              int courseDescription = course.getCourseDescription();
+              int courseDate = StudentCourseRequirement.getTimetabledDate();
+              int coursePTTeacher = StudentCourseRequirement.getTeacher()
+    	}
     }
+
 
     public void readTeacherTrainingInfo(){
         for (TeacherTrainingCourse ttc : TeacherTrainingStore.getData()) {
