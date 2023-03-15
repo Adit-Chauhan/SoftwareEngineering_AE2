@@ -21,7 +21,7 @@ public class TeacherStore extends BaseStore<Teacher> {
     }
 
     @Override
-    protected void add(Teacher val) {
+    public void add(Teacher val) {
         Optional<Teacher> maybeTeacher = localData.stream().filter(c -> c.getTeacherID() == val.getTeacherID()).findFirst();
         maybeTeacher.ifPresent(teacher -> localData.remove(teacher));
         localData.add(val);
@@ -35,8 +35,8 @@ public class TeacherStore extends BaseStore<Teacher> {
     public Iterator<Teacher> getFilteredTeachersOr(int filterSettings){
         Stream<Teacher> v =  Stream.empty();
         if ((filterSettings & Unassigned) == Unassigned) Stream.concat(v,getData().stream().filter(s -> !s.isAssigned()));
-        if((filterSettings & Assigned) == Assigned)      Stream.concat(v,getData().stream().filter(s->s.isAssigned()));
-        if((filterSettings & Trained) == Trained)        Stream.concat(v,getData().stream().filter(s-> s.getTrainingCompletedStatus()));
+        if((filterSettings & Assigned) == Assigned)      Stream.concat(v,getData().stream().filter(Teacher::isAssigned));
+        if((filterSettings & Trained) == Trained)        Stream.concat(v,getData().stream().filter(Teacher::getTrainingCompletedStatus));
         if((filterSettings & Untrained) == Untrained)    Stream.concat(v,getData().stream().filter(s-> !s.getTrainingCompletedStatus()));
 
         v = v.distinct(); // Remove common
@@ -47,9 +47,9 @@ public class TeacherStore extends BaseStore<Teacher> {
         Stream<Teacher> v = getData().stream();
         if ((filterSettings & Unassigned) == Unassigned) v=v.filter(s -> !s.isAssigned());
 
-        if((filterSettings & Assigned) == Assigned)      v=v.filter(s->s.isAssigned());
+        if((filterSettings & Assigned) == Assigned)      v=v.filter(Teacher::isAssigned);
 
-        if((filterSettings & Trained) == Trained)        v=v.filter(s-> s.getTrainingCompletedStatus());
+        if((filterSettings & Trained) == Trained)        v=v.filter(Teacher::getTrainingCompletedStatus);
 
         if((filterSettings & Untrained) == Untrained)    v=v.filter(s-> !s.getTrainingCompletedStatus());
 

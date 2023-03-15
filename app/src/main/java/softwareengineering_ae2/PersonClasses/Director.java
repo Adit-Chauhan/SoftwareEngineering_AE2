@@ -3,7 +3,9 @@ package softwareengineering_ae2.PersonClasses;
 import softwareengineering_ae2.CourseClasses.StudentCourseRequirements;
 import softwareengineering_ae2.CourseClasses.StudentCourseRequirementsBuilder;
 import softwareengineering_ae2.TimetableDate.TimetableDate;
+import softwareengineering_ae2.datastore.StudentCourseStore;
 
+import java.io.IOException;
 import java.time.YearMonth;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -11,12 +13,13 @@ import java.util.HashSet;
 import java.util.Scanner;
 
 public class Director extends Staff {
-
-	public Director(String n, int a, int id, String title) {
+	StudentCourseStore courses;
+	public Director(String n, int a, int id, String title) throws IOException {
 		super(n, a, id, title);
+		courses = StudentCourseStore.getInstance();
 	}
 
-	public void addRequirments(StudentCourseRequirements s) {
+	public void addRequirments() {
 		Scanner r = new Scanner(System.in);
 		boolean t = true;
 		String courseName = null;
@@ -119,6 +122,6 @@ public class Director extends Staff {
 		builder.addStudentCourseDateTime(timeTable);
 		
 		StudentCourseRequirements studentCourse = builder.getCourseRelatedObject();
-		
+		courses.add(studentCourse);
 	}
 }
