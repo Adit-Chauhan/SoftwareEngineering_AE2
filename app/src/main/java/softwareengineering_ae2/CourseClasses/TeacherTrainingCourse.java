@@ -9,6 +9,7 @@ public class TeacherTrainingCourse extends Course {
 	private int maxCourseCapacity;
 	private ArrayList<TimetableDate> trainingTimes;
 	private HashSet<String> taughtSkillSet;
+	private String teacherSet;
 
 	/*// TODO: Decide on if keep or not. NOT ON OG UML CLASS DIAGRAM
 	private int spacesLeft; 
@@ -56,6 +57,10 @@ public class TeacherTrainingCourse extends Course {
 	// Returns list of skillsets taught in the teacher training course
 	public HashSet<String> getTaughtSkillSet(){
 		return taughtSkillSet;
+	}
+
+	public void setTeacher(String name){
+		this.teacherSet = name;
 	}
 
 

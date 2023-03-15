@@ -4,10 +4,10 @@ abstract class Course{
 	private int courseID;
 	private String nameOfCourse;
 	private String courseDescription;
+	private String teacherSet;
 
 
-		/*    SETTERS    */
-	
+		/*    SETTERS    */	
 	// Sets the name of the specific course
 	public void setCourseName(String inputCourseName){
 		this.nameOfCourse = inputCourseName;
@@ -16,7 +16,6 @@ abstract class Course{
 	public void setCourseDescription(String inputCourseDesc){
 		this.courseDescription = inputCourseDesc;
 	}
-
 
 		/*    GETTERS    */
 	// Return the courseID for the specific course
@@ -31,6 +30,10 @@ abstract class Course{
 	// Return the description of the specific course
 	public String getCourseDescription(){
 		return courseDescription;
+	}
+
+	public void setTeacher(String name){
+		this.teacherSet = name;
 	}
 
 }
