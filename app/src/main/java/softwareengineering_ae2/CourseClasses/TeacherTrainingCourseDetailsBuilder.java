@@ -2,15 +2,13 @@ package softwareengineering_ae2.CourseClasses;
 
 import java.util.HashSet;
 
-public TeacherTrainingCourseDetailsBuilder implements CourseReqDetailsBuilder{
+public class TeacherTrainingCourseDetailsBuilder implements CourseReqDetailsBuilder{
 	TeacherTrainingCourse teachingCourse;
 	
 	// Constructor for this builder. Creates a new TeacherTrainingCourse object & assigns it an ID
 	public TeacherTrainingCourseDetailsBuilder(){
 		teachingCourse = new TeacherTrainingCourse();
 	}
-
-
 
 	/*    Methods overridden from CourseReqDetailsBuilder    */
 	@Override
