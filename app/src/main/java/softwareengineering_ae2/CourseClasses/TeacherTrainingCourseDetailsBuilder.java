@@ -38,7 +38,7 @@ public class TeacherTrainingCourseDetailsBuilder implements CourseReqDetailsBuil
 	// Add taught skillset to the TeacherTrainingCourse object
 	@Override
 	public void addSkills(HashSet<String> skillSet){
-		this.teachingCourse.setTaughtSkillSet(skillSet);
+		this.teachingCourse.setSkillSet(skillSet);
 	};
 
 
