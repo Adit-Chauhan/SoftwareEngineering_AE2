@@ -20,7 +20,6 @@ import java.util.HashSet;
 public class StudentCourseRequirements extends Course {
 	private Teacher teacher;
 	private TimetableDate studentCourseDateTime;
-	private HashSet<String> requiredSkills;
 
 
 	// Simple constructor left in to add student course ID
@@ -30,12 +29,7 @@ public class StudentCourseRequirements extends Course {
 
 
 		/*	SETTERS	*/
-	// NOTE: Class also has setters for course name and description inherited from Course abstract class
-		
-	// Sets date time for the student course	
-	public void setRequiredSkills(HashSet<String> newRequiredSkills){
-		this.requiredSkills = newRequiredSkills;
-	} 
+	// NOTE: Class also has setters for course name, description and skillset inherited from Course abstract class
 		
 	// Sets date time for the student course	
 	public void setStudentCourseDateTime(TimetableDate newCourseDateTime){
@@ -50,7 +44,7 @@ public class StudentCourseRequirements extends Course {
 
 
 		/*	GETTERS	*/
-	// NOTE: Class also has getters for course name, description and course ID, inherited from Course abstract class
+	// NOTE: Class also has getters for course name, description, ID, and skillset inherited from Course abstract class
 
 	// Getter for the date/time scheduled for the student course
 	public TimetableDate getTimetabledDate(){
@@ -61,12 +55,6 @@ public class StudentCourseRequirements extends Course {
 	public Teacher getTeacher(){
 		return teacher;
 	} 
-
-	// Returns total list of requirements
-	public HashSet<String> getSkillsRequired(){
-		return requiredSkills;
-	}
-
 
 }
 
