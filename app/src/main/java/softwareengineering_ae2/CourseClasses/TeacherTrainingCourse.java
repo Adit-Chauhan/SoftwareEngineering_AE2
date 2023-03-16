@@ -17,7 +17,6 @@ import java.util.HashSet;
 *
 */
 public class TeacherTrainingCourse extends Course {
-	private static int totalTeacherTrainingCourseIDs = 0;
 	private int maxCourseCapacity;
 	private ArrayList<TimetableDate> trainingTimes;
 	private HashSet<String> taughtSkillSet;
@@ -31,7 +30,7 @@ public class TeacherTrainingCourse extends Course {
 
 	// Simple constructor left in to add student course ID
 	public TeacherTrainingCourse(){
-		this.courseID = totalTeacherTrainingCourseIDs++;
+		super();
 	}
 
 
@@ -74,11 +73,6 @@ public class TeacherTrainingCourse extends Course {
 	public void setTeacher(String name){
 		this.teacherSet = name;
 	}
-
-	public int getID() {
-		return totalTeacherTrainingCourseIDs;
-	}
-
 
 
 	/* TODO: DETERMINE IF NEEDED */

@@ -15,7 +15,7 @@ public class TeacherTrainingStore extends BaseStore<TeacherTrainingCourse> {
     }
 
     @Override
-    protected void add(TeacherTrainingCourse val) {
+    public void add(TeacherTrainingCourse val) {
         Optional<TeacherTrainingCourse> maybeCourse = localData.stream().filter(c -> c.getCourseID() == val.getCourseID()).findFirst();
         maybeCourse.ifPresent(teacherTrainingCourse -> localData.remove(teacherTrainingCourse));
         localData.add(val);

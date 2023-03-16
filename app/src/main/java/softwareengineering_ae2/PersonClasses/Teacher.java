@@ -7,7 +7,6 @@ import java.util.ArrayList;
 
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class Teacher extends Staff{
-	private int teacherID;
 	private int age;
 	private String teacherName;
 	private String title;
@@ -17,8 +16,8 @@ public class Teacher extends Staff{
 	ArrayList<TimetableDate> availableTimes;
 	ArrayList<String> teacherSkillSet;
 	
-	public Teacher(String teacherName, int age, int teacherID, String title) {
-		super(teacherName, age, teacherID, title);
+	public Teacher(String teacherName, int age, String title) {
+		super(teacherName, age, title);
 		hasCompletedTraining = false;
 		availableTimes = new ArrayList<TimetableDate>();
 		teacherSkillSet = new ArrayList<String>();
@@ -32,14 +31,6 @@ public class Teacher extends Staff{
 		this.title = title;
 	}
 	
-	public int getTeacherID() {
-		return teacherID;
-	}
-
-	public void setTeacherID(int teacherID) {
-		this.teacherID = teacherID;
-	}
-
 	public int getAge() {
 		return age;
 	}

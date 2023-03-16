@@ -2,23 +2,26 @@ package softwareengineering_ae2.PersonClasses;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
+import java.util.UUID;
+
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 abstract class Staff extends Person{
-	private int id;
+	private UUID id;
 	private String title;
 	
-	public Staff (String name, int age, int id, String title) {
+	public Staff (String name, int age, String title) {
 		super(name, age);
-		this.setId(id);
 		this.setTitle(title);
+		this.id = UUID.randomUUID();
 	}
 
 	//getter and setter
-	public int getId() {
+
+	public UUID getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 

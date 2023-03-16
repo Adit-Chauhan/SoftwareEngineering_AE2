@@ -15,7 +15,7 @@ import java.util.Scanner;
 public class Director extends Staff {
 	StudentCourseStore courses;
 	public Director(String n, int a, int id, String title) throws IOException {
-		super(n, a, id, title);
+		super(n, a, title);
 		courses = StudentCourseStore.getInstance();
 	}
 

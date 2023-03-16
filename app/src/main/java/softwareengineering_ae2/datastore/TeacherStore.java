@@ -22,7 +22,7 @@ public class TeacherStore extends BaseStore<Teacher> {
 
     @Override
     public void add(Teacher val) {
-        Optional<Teacher> maybeTeacher = localData.stream().filter(c -> c.getTeacherID() == val.getTeacherID()).findFirst();
+        Optional<Teacher> maybeTeacher = localData.stream().filter(c -> c.getId() == val.getId()).findFirst();
         maybeTeacher.ifPresent(teacher -> localData.remove(teacher));
         localData.add(val);
     }
