@@ -1,5 +1,14 @@
 package softwareengineering_ae2.CourseClasses;
 
+/**
+*	Course Abstract class: Defines basic attributes and methods required for course-related classes to inherit.
+*	Methods from here are also used in the CourseReqDetailsBuilder.java Builder Interface.
+*
+* @see: CourseReqDetailsBuilder.java
+* @see: StudentCourseRequirements.java
+* @see: TeacherTrainingCourse.java
+*
+*/
 public abstract class Course{
 	protected int courseID;
 	private String nameOfCourse;
