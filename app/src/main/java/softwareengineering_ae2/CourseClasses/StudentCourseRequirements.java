@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import softwareengineering_ae2.PersonClasses.Teacher;
 import softwareengineering_ae2.TimetableDate.TimetableDate;
 
-import java.util.HashSet;
 
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 
