@@ -38,7 +38,7 @@ public class StudentCourseRequirementsBuilder implements CourseReqDetailsBuilder
 	@Override
 	// AddSkillset to the StudentCourseRequirements object
 	public void addSkills(HashSet<String> inputSkillSet){
-		this.studentCourse.setRequiredSkills(inputSkillSet);
+		this.studentCourse.setSkillSet(inputSkillSet);
 	};
 
 	/*    Method specific to StudentCourseRequirements object setup    */
