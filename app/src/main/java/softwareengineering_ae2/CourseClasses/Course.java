@@ -15,8 +15,6 @@ public abstract class Course{
 	protected UUID courseID;
 	private String nameOfCourse;
 	private String courseDescription;
-	private String teacherSet;
-
 
 	public Course(){
 		courseID = UUID.randomUUID();
@@ -46,10 +44,6 @@ public abstract class Course{
 	// Return the description of the specific course
 	public String getCourseDescription(){
 		return courseDescription;
-	}
-
-	public void setTeacher(String name){
-		this.teacherSet = name;
 	}
 
 }
