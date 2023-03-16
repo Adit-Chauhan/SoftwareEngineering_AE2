@@ -49,11 +49,9 @@ public class TeacherTrainingCourseDetailsBuilder implements CourseReqDetailsBuil
 	}
 	
 	// Adds maximum course capacity for the TeacherTrainingCourse object
-	public void addTeacherTrainingClassSize(int inputMaxCourseCapacity){} //::ADIT:: This was just there but it does
-	  																      // the same thing as the method below it?
-	public void setTeacherTrainingClassSize(int inputMaxCourseCapacity){
-		this.teachingCourse.setTeacherTrainingClassSize(inputMaxCourseCapacity);
-	}
+	public void addTeacherTrainingClassSize(int inputMaxCourseCapacity){
+		this.teachingCourse.setTeacherTrainingClassSize(inputMaxCourseCapacity);	
+	} 
 
 	
 		/*    TeacherTrainingCourse object completion    */
