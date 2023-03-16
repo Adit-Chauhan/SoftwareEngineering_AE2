@@ -21,7 +21,7 @@ public class TeacherTrainingCourse extends Course {
 	private ArrayList<TimetableDate> trainingTimes;
 	private HashSet<String> taughtSkillSet;
 	private int spacesLeft; 
-	private HashSet<PartTimeTeachers> teacherTrainingAttendees;// TODO: Decide on if keep or not. NOT ON OG UML CLASS DIAGRAM
+	private HashSet<Teacher> teacherTrainingAttendees;
 
 
 	// Simple constructor left in to add teacher training course ID
@@ -75,8 +75,8 @@ public class TeacherTrainingCourse extends Course {
 
 	
 			/*	METHODS FOR ADDING/REMOVING TEACHERS TO/FROM THE TRAINING COURSE	*/
-	// Add part-time teacher to the training course and update spaces remaining
-	public void addAttendee(PartTimeTeacher newAttendee){
+	// Add teacher to the training course and update spaces remaining
+	public void addAttendee(Teacher newAttendee){
 		if(spacesLeft > 0){
 			teacherTrainingAttendees.add(newAttendee);
 			spacesLeft--;		
@@ -86,8 +86,31 @@ public class TeacherTrainingCourse extends Course {
 		}
 	}
 	
-	// Remove part-time teacher from the training course and update spaces remaining
-	public void removeAttendee(PartTimeTeacher attendeeToRemove){
+	// Check if a teacher is on the list for the training course
+	public String checkAttendee(Teacher t){
+		String outcome = String.format("Nope! %s. s is not on the list for %s", t.getTitle(), t.getTeacherName(), this.getCourseName());
+		
+		if(teacherTrainingAttendees.contains(t)){
+			outcome = String.format("Yep! %s. %s is on the list for %s", t.getTitle(), t.getTeacherName(), this.getCourseName());
+		}
+		
+		return outcome; 
+	}
+
+	
+	// Return the complete list of all attendees of the teacher training course
+	public String listAttendees(){
+		String list = "List of all attendees:\n";
+		
+		for(Teacher t : teacherTrainingAttendees){
+			list += t.getTitle()+". "+t.getTeacherName()+"\n";
+		}
+		
+		return list;	
+	}
+
+	// Remove teacher from the training course and update spaces remaining
+	public void removeAttendee(Teacher attendeeToRemove){
 		if(spacesLeft < maxCourseCapacity && spacesLeft >= 0){
 			teacherTrainingAttendees.remove(attendeeToRemove);
 			spacesLeft++;
@@ -96,11 +119,11 @@ public class TeacherTrainingCourse extends Course {
 			System.out.println("Cannot remove teachers: Teacher Training Course Empty!");
 		}
 	}
-	// Clear all part-time teachers from the training course and update spaces remaining
+	
+	// Clear all teachers from the training course and update spaces remaining
 	public void clearAttendees(){
 		teacherTrainingAttendees.clear();
 		spacesLeft = this.maxCourseCapacity;
 	}
-
 
 }
