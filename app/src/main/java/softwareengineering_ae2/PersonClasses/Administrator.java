@@ -81,7 +81,7 @@ public class Administrator {
                 }
             }
             if (skillcount > 4) {
-                course.setTeacher(t.getName());
+                course.setTeacher(t);
             }
 
         }
