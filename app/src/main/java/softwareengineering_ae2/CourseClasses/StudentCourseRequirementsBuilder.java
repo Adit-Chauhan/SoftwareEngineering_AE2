@@ -5,6 +5,14 @@ import softwareengineering_ae2.TimetableDate.TimetableDate;
 
 import java.util.HashSet;
 
+
+/**
+*	StudentCourseRequirementsBuilder class: Concrete builder for creating StudentCourseRequirements objects.
+*
+* @see: CourseReqDetailsBuilder.java
+* @see: StudentCourseRequirements.java
+*
+*/
 public class StudentCourseRequirementsBuilder implements CourseReqDetailsBuilder {
 	StudentCourseRequirements studentCourse; 
 
