@@ -5,6 +5,14 @@ import softwareengineering_ae2.TimetableDate.TimetableDate;
 import java.util.ArrayList;
 import java.util.HashSet;
 
+
+/**
+*	TeacherTrainingCourseDetailsBuilder class: Concrete builder for creating TeacherTrainingCourse objects.
+*
+* @see: CourseReqDetailsBuilder.java
+* @see: TeacherTrainingCourse.java
+*
+*/
 public class TeacherTrainingCourseDetailsBuilder implements CourseReqDetailsBuilder{
 	TeacherTrainingCourse teachingCourse;
 	
