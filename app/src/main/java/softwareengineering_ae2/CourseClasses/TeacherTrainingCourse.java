@@ -7,6 +7,15 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
+
+/**
+*	TeacherTrainingCourse class: Defines further attributes and methods specific to Teacher training courses. Extends Course Abstract class.
+*	Methods from here are also used in the TeacherTrainingCourseDetailsBuilder.java Builder Class, as well as Administrator.java.
+*
+* @see: TeacherTrainingCourseDetailsBuilder.java
+* @see: Administrator.java
+*
+*/
 public class TeacherTrainingCourse extends Course {
 	private static int totalTeacherTrainingCourseIDs = 0;
 	private int maxCourseCapacity;
