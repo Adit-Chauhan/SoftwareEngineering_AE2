@@ -1,6 +1,7 @@
 package softwareengineering_ae2.CourseClasses;
 
 import java.util.UUID;
+import java.util.HashSet;
 
 /**
 *	Course Abstract class: Defines basic attributes and methods required for course-related classes to inherit.
@@ -15,6 +16,7 @@ public abstract class Course{
 	protected UUID courseID;
 	private String nameOfCourse;
 	private String courseDescription;
+	private HashSet<String> skillSet;
 
 	public Course(){
 		courseID = UUID.randomUUID();
@@ -32,6 +34,11 @@ public abstract class Course{
 	public void setCourseDescription(String inputCourseDesc){
 		this.courseDescription = inputCourseDesc;
 	}
+	
+	// Sets skillset for the course	
+	public void setSkillSet(HashSet<String> newSkillSet){
+		this.skillSet = newSkillSet;
+	} 
 
 		/*    GETTERS    */
 	// Return the courseID for the specific course
@@ -48,5 +55,11 @@ public abstract class Course{
 	public String getCourseDescription(){
 		return courseDescription;
 	}
+	
+	// Returns the skillset for the course	
+	public HashSet<String> getSkillSet(){
+		return this.skillSet;
+	} 
+
 
 }
