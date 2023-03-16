@@ -19,6 +19,9 @@ public abstract class Course{
 	public Course(){
 		courseID = UUID.randomUUID();
 	}
+	
+		/*	ABSTRACT METHODS	*/
+	public void setTeacher(Teacher t);
 
 		/*    SETTERS    */	
 	// Sets the name of the specific course
