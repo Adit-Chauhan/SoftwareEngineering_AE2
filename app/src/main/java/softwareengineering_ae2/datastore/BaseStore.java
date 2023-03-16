@@ -20,7 +20,7 @@ public abstract class BaseStore<T>  {
         return database.data();
     }
     // Add new Value to local Database
-    protected abstract void add(T val);
+    public abstract void add(T val);
 
     // Get relevant Data
     public abstract List<T> getData();
