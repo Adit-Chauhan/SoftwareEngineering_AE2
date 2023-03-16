@@ -20,15 +20,11 @@ public class TeacherTrainingCourse extends Course {
 	private int maxCourseCapacity;
 	private ArrayList<TimetableDate> trainingTimes;
 	private HashSet<String> taughtSkillSet;
-	private String teacherSet;
-
-	/*// TODO: Decide on if keep or not. NOT ON OG UML CLASS DIAGRAM
 	private int spacesLeft; 
 	private HashSet<PartTimeTeachers> teacherTrainingAttendees;// TODO: Decide on if keep or not. NOT ON OG UML CLASS DIAGRAM
-	*/
 
 
-	// Simple constructor left in to add student course ID
+	// Simple constructor left in to add teacher training course ID
 	public TeacherTrainingCourse(){
 		super();
 	}
@@ -70,30 +66,26 @@ public class TeacherTrainingCourse extends Course {
 		return taughtSkillSet;
 	}
 
-	public void setTeacher(String name){
-		this.teacherSet = name;
-	}
 
-
-	/* TODO: DETERMINE IF NEEDED */
-	/*
 	// Methods for adding/removing part time teachers to the attendees set
 	// Return remaining spaces left for the teacher training course
 	public int getSpacesLeft(){
 		return spacesLeft;
 	}
 
+	
+			/*	METHODS FOR ADDING/REMOVING TEACHERS TO/FROM THE TRAINING COURSE	*/
 	// Add part-time teacher to the training course and update spaces remaining
 	public void addAttendee(PartTimeTeacher newAttendee){
 		if(spacesLeft > 0){
 			teacherTrainingAttendees.add(newAttendee);
 			spacesLeft--;		
 		}
-		//TODO: DECIDE ON ACTION HERE
 		else{
 			System.out.println("Teacher Training Course Full!");
 		}
 	}
+	
 	// Remove part-time teacher from the training course and update spaces remaining
 	public void removeAttendee(PartTimeTeacher attendeeToRemove){
 		if(spacesLeft < maxCourseCapacity && spacesLeft >= 0){
@@ -101,7 +93,7 @@ public class TeacherTrainingCourse extends Course {
 			spacesLeft++;
 		}
 		else if(spacesLeft == maxCourseCapacity){
-			// TODO: DOSOMETHING... necessary?
+			System.out.println("Cannot remove teachers: Teacher Training Course Empty!");
 		}
 	}
 	// Clear all part-time teachers from the training course and update spaces remaining
@@ -109,6 +101,6 @@ public class TeacherTrainingCourse extends Course {
 		teacherTrainingAttendees.clear();
 		spacesLeft = this.maxCourseCapacity;
 	}
-	*/
+
 
 }
