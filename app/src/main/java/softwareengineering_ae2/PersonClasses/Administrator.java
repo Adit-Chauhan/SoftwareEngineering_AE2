@@ -93,7 +93,7 @@ public class Administrator {
             for (TeacherTrainingCourse ttc : trainingcourses) {
                 for (TimetableDate trianingtime : ttc.getTrainingTimes()) {
                     if (time.equals(trianingtime)) {
-                        ttc.setTeacher(teacher.getName());
+                        ttc.addAttendee(teacher);
                     }
                 }
             }
