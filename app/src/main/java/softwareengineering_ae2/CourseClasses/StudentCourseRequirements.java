@@ -7,6 +7,16 @@ import softwareengineering_ae2.TimetableDate.TimetableDate;
 import java.util.HashSet;
 
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
+
+
+/**
+*	StudentCourseRequirements class: Defines further attributes and methods specific to StudentCourseRequirements. Extends Course Abstract class.
+*	Methods from here are also used in the StudentCourseRequirementsBuilder.java Builder Class, as well as Administrator.java.
+*
+* @see: StudentCourseRequirementsBuilder.java
+* @see: Administrator.java
+*
+*/
 public class StudentCourseRequirements extends Course {
 	private static int totalStudentCourseIDs = 0;
 	private Teacher teacher;
