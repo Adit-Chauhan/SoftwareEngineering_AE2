@@ -70,7 +70,7 @@ public class Administrator {
                 //::ADIT:: Logic seems correct but it should be better if we moved the taught skillset to Course class and
                 // ran a for loop on that instead we don't even need to run this on Parent class as function is only
                 // Called for.
-                List<String> des = new ArrayList<String>(Arrays.asList(course.getCourseDescription().split(" ")));
+                List<String> des = new ArrayList<String>(Arrays.asList(course.getCourseDescription().split(" "))); //::LYNETTE:: why using course description when the course already has a hashset of required skills? "HashSet<String> requiredSkills" -> getSkillsRequired() gives you this
                 for (String skill : t.getTeacherSkillSet()) {
                     for (String s : des) {
                         if (skill.equals(s)) {
