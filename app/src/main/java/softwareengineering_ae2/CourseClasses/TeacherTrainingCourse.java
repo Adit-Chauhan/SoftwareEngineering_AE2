@@ -19,7 +19,6 @@ import java.util.HashSet;
 public class TeacherTrainingCourse extends Course {
 	private int maxCourseCapacity;
 	private ArrayList<TimetableDate> trainingTimes;
-	private HashSet<String> taughtSkillSet;
 	private int spacesLeft; 
 	private HashSet<Teacher> teacherTrainingAttendees;
 
@@ -31,7 +30,7 @@ public class TeacherTrainingCourse extends Course {
 
 
 		/*	SETTERS	*/
-	// NOTE: Class also has setters for course name and description inherited from Course abstract class
+	// NOTE: Class also has setters for course name, description and skillset inherited from Course abstract class
 
 	// Sets maximum course capacity for the teacher training course
 	public void setTeacherTrainingClassSize(int inputMaxCourseCapacity){
@@ -43,14 +42,9 @@ public class TeacherTrainingCourse extends Course {
 		this.trainingTimes = inputTrainingTimes;
 	}
 	
-	// Sets list of skillsets taught in the teacher training course
-	public void setTaughtSkillSet(HashSet<String> inputTaughtSkillSet){
-		this.taughtSkillSet = inputTaughtSkillSet;
-	}
-
 	
 		/*	GETTERS	*/
-	// NOTE: Class also has getters for course name, description and course ID, inherited from Course abstract class
+	// NOTE: Class also has getters for course name, description, ID, and skillset inherited from Course abstract class
 	// Return maximum course capacity for the teacher training course
 	public int getTeacherTrainingClassSize(){
 		return maxCourseCapacity;
@@ -61,11 +55,6 @@ public class TeacherTrainingCourse extends Course {
 		return trainingTimes;
 	}
 	
-	// Returns list of skillsets taught in the teacher training course
-	public HashSet<String> getTaughtSkillSet(){
-		return taughtSkillSet;
-	}
-
 
 	// Methods for adding/removing part time teachers to the attendees set
 	// Return remaining spaces left for the teacher training course
