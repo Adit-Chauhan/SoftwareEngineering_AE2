@@ -18,15 +18,16 @@ public class StudentCourseStore extends BaseStore<StudentCourseRequirements> {
     private StudentCourseStore() throws IOException {
         super();
     }
-
+    // Only add new data if new entry
     @Override
     public void add(StudentCourseRequirements val) {
         if(localData == null) localData = new ArrayList<>();
         Optional<StudentCourseRequirements> maybeCourse = localData.stream().filter(c -> c.getCourseID() == val.getCourseID()).findFirst();
-        maybeCourse.ifPresent(teacherTrainingCourse -> localData.remove(teacherTrainingCourse));
-        localData.add(val);
+        maybeCourse.ifPresent(teacherTrainingCourse -> localData.remove(teacherTrainingCourse)); // If it finds an older entry then delete it
+        localData.add(val); // add entry to list
     }
 
+    // Only get data
     @Override
     public List<StudentCourseRequirements> getData() {
         if(localData == null) localData = data().getStudentCourse();
@@ -42,13 +43,17 @@ public class StudentCourseStore extends BaseStore<StudentCourseRequirements> {
         if(inst == null) inst = new StudentCourseStore();
         return inst;
     }
-    public Iterator<StudentCourseRequirements> getFilteredStudentCourses(int filterSettings){
+    // These are not being used in the program but where made in consideration that if a Database is used it is more
+    // efficient to pass simple checks such as these to Database Queries
+    public List<StudentCourseRequirements> getFilteredStudentCourses(int filterSettings){
         Stream<StudentCourseRequirements> v =  Stream.empty();
-        if ((filterSettings & Unassigned) == Unassigned) Stream.concat(v, getData().stream().filter(s -> !(s.getTeacher()== null)));
+        if ((filterSettings & Unassigned) == Unassigned)
+            Stream.concat(v, getData().stream().filter(s -> !(s.getTeacher()== null)));
 
         
-        if((filterSettings & Assigned) == Assigned) Stream.concat(v,getData().stream().filter(s-> s.getTeacher() != null));
+        if((filterSettings & Assigned) == Assigned)
+            Stream.concat(v,getData().stream().filter(s-> s.getTeacher() != null));
 
-        return v.iterator();
+        return v.toList();
     }
 }

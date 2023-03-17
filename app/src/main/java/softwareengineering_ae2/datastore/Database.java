@@ -17,8 +17,8 @@ import java.util.List;
 * instance of Database class that can directly access data.
 *
 * */
-// Placeholder Teacher Class
 
+// This class is directly read from the database
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 class FullData {
     List<StudentCourseRequirements> studentCourse;
@@ -57,7 +57,7 @@ class Database {
     private static Database inst;
     private static ObjectMapper objMap;
 
-    // Allow any subtype that implements DatabaseOperations
+    // Allow any subtype of BaseStore
     private static List<BaseStore<?>> users;
      private Database() throws IOException {
         if(database == null) database = Paths.get("data/data.json");

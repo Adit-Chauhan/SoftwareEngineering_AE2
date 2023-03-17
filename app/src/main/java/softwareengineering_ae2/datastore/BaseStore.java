@@ -10,7 +10,6 @@ public abstract class BaseStore<T>  {
     // Local copy of the database to prevent unnecessary R/W operations
     List<T> localData;
 
-    // May need fixing
     protected BaseStore() throws IOException {
         if ((database == null)) database = Database.getInstance(this);
     }
