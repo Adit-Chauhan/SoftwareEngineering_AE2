@@ -1,6 +1,7 @@
 package softwareengineering_ae2.CourseClasses;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import softwareengineering_ae2.PersonClasses.Teacher;
 import softwareengineering_ae2.TimetableDate.TimetableDate;
 
 import java.util.ArrayList;
@@ -28,8 +29,13 @@ public class TeacherTrainingCourse extends Course {
 		super();
 	}
 
+	@Override
+	public void setTeacher(Teacher newTeacher) {
+		// Do nothing
+	}
 
-		/*	SETTERS	*/
+
+	/*	SETTERS	*/
 	// NOTE: Class also has setters for course name, description and skillset inherited from Course abstract class
 
 	// Sets maximum course capacity for the teacher training course
@@ -115,4 +121,23 @@ public class TeacherTrainingCourse extends Course {
 		spacesLeft = this.maxCourseCapacity;
 	}
 
+	public int getMaxCourseCapacity() {
+		return maxCourseCapacity;
+	}
+
+	public void setMaxCourseCapacity(int maxCourseCapacity) {
+		this.maxCourseCapacity = maxCourseCapacity;
+	}
+
+	public void setSpacesLeft(int spacesLeft) {
+		this.spacesLeft = spacesLeft;
+	}
+
+	public HashSet<Teacher> getTeacherTrainingAttendees() {
+		return teacherTrainingAttendees;
+	}
+
+	public void setTeacherTrainingAttendees(HashSet<Teacher> teacherTrainingAttendees) {
+		this.teacherTrainingAttendees = teacherTrainingAttendees;
+	}
 }

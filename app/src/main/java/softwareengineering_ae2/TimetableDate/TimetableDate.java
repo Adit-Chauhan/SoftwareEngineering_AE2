@@ -1,34 +1,46 @@
 package softwareengineering_ae2.TimetableDate;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+
 import java.io.Serializable;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
+public class TimetableDate {
+    int day;
+    int month;
+    int year;
 
-public class TimetableDate implements Serializable{
-    private static final long serialVersionUID = 1L;
-    ZonedDateTime courseScheduledTime;
-    DateTimeFormatter courseScheduledTimeFormatter;
-    String formattedCourseScheduledTime;
-
-
-
-    public String getFormattedCourseScheduled(){
-        formattedCourseScheduledTime = DateTimeFormatter.ISO_LOCAL_DATE_TIME.format(courseScheduledTime);
-        return formattedCourseScheduledTime;
-
+    public TimetableDate(){}
+    public TimetableDate(int day, int month, int year) {
+        this.day = day;
+        this.month = month;
+        this.year = year;
     }
 
-    public void setTime(ZonedDateTime time){
-        courseScheduledTime = time;
+    public int getDay() {
+        return day;
     }
 
-    public ZonedDateTime getTime(){
-        return courseScheduledTime;
+    public void setDay(int day) {
+        this.day = day;
     }
 
+    public int getMonth() {
+        return month;
+    }
 
+    public void setMonth(int month) {
+        this.month = month;
+    }
 
+    public int getYear() {
+        return year;
+    }
 
+    public void setYear(int year) {
+        this.year = year;
+    }
 }
 

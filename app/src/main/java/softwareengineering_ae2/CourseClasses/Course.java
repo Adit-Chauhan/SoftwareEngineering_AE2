@@ -1,5 +1,8 @@
 package softwareengineering_ae2.CourseClasses;
 
+import softwareengineering_ae2.PersonClasses.Teacher;
+import softwareengineering_ae2.TimetableDate.TimetableDate;
+
 import java.util.UUID;
 import java.util.HashSet;
 
@@ -18,14 +21,16 @@ public abstract class Course{
 	private String courseDescription;
 	private HashSet<String> skillSet;
 
+	private TimetableDate timetabledDate;
 	public Course(){
 		courseID = UUID.randomUUID();
 	}
-	
-		/*	ABSTRACT METHODS	*/
-	public void setTeacher(Teacher t);
 
-		/*    SETTERS    */	
+
+
+	public abstract void setTeacher(Teacher newTeacher);
+
+	/*    SETTERS    */
 	// Sets the name of the specific course
 	public void setCourseName(String inputCourseName){
 		this.nameOfCourse = inputCourseName;
@@ -59,7 +64,19 @@ public abstract class Course{
 	// Returns the skillset for the course	
 	public HashSet<String> getSkillSet(){
 		return this.skillSet;
-	} 
+	}
 
+	public void setCourseID(UUID courseID) {
+		this.courseID = courseID;
+	}
 
+	public String getNameOfCourse() {
+		return nameOfCourse;
+	}
+
+	public void setNameOfCourse(String nameOfCourse) {
+		this.nameOfCourse = nameOfCourse;
+	}
+
+// Sets teacher assigned to teach the student course
 }

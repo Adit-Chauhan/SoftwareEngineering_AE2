@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 abstract class Person {
 	private String name;
 	private int age;
-	
+	public Person(){}
 	public Person(String n, int a) {
 		this.setName(n); this.setAge(a);
 	}

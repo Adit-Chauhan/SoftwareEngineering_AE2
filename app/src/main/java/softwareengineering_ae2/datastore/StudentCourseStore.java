@@ -4,6 +4,7 @@ package softwareengineering_ae2.datastore;
 import softwareengineering_ae2.CourseClasses.StudentCourseRequirements;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
@@ -20,6 +21,7 @@ public class StudentCourseStore extends BaseStore<StudentCourseRequirements> {
 
     @Override
     public void add(StudentCourseRequirements val) {
+        if(localData == null) localData = new ArrayList<>();
         Optional<StudentCourseRequirements> maybeCourse = localData.stream().filter(c -> c.getCourseID() == val.getCourseID()).findFirst();
         maybeCourse.ifPresent(teacherTrainingCourse -> localData.remove(teacherTrainingCourse));
         localData.add(val);
@@ -28,6 +30,7 @@ public class StudentCourseStore extends BaseStore<StudentCourseRequirements> {
     @Override
     public List<StudentCourseRequirements> getData() {
         if(localData == null) localData = data().getStudentCourse();
+        if(localData == null) localData = new ArrayList<>();
         return localData;
     }
     @Override
@@ -46,7 +49,6 @@ public class StudentCourseStore extends BaseStore<StudentCourseRequirements> {
         
         if((filterSettings & Assigned) == Assigned) Stream.concat(v,getData().stream().filter(s-> s.getTeacher() != null));
 
-        v = v.distinct(); // Should not be possible in this case but for security
         return v.iterator();
     }
 }

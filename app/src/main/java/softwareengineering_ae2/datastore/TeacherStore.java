@@ -4,6 +4,7 @@ import softwareengineering_ae2.CourseClasses.TeacherTrainingCourse;
 import softwareengineering_ae2.PersonClasses.Teacher;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
@@ -22,6 +23,7 @@ public class TeacherStore extends BaseStore<Teacher> {
 
     @Override
     public void add(Teacher val) {
+        if(localData == null)localData = new ArrayList<>();
         Optional<Teacher> maybeTeacher = localData.stream().filter(c -> c.getId() == val.getId()).findFirst();
         maybeTeacher.ifPresent(teacher -> localData.remove(teacher));
         localData.add(val);

@@ -63,19 +63,8 @@ class Database {
         if(database == null) database = Paths.get("data/data.json");
 
         if(objMap == null) objMap = new ObjectMapper();
-        try {
-            if (fullDatabase == null) fullDatabase = objMap.readValue(database.toFile(), FullData.class);
-        } catch (Exception e){
-            System.out.println("Making empty db");
-            // Just Temp approach
-            FullData data = new FullData();
-            data.setTeacherCourse(new ArrayList<>());
-            data.setTeachers(new ArrayList<>());
-            data.setStudentCourse(new ArrayList<>());
-            fullDatabase = data;
-            write();
-            throw e;
-        }
+        if (fullDatabase == null) fullDatabase = objMap.readValue(database.toFile(), FullData.class);
+
         if(users == null) users = new ArrayList<>();
         // Setup the Shutdown Hood
         Runtime.getRuntime().addShutdownHook(new Thread() {

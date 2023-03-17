@@ -104,7 +104,7 @@ public class Director extends Staff {
 		
 		ZonedDateTime zonedDateTime = ZonedDateTime.of(year, month, date, time, 0, 0, 0, ZoneId.of("Europe/London"));
 
-		TimetableDate timeTable = new TimetableDate();
+		TimetableDate timeTable = new TimetableDate(date,month,year);
 		
 		//create skills hashset
 		while(t) {

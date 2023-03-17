@@ -103,11 +103,11 @@ public class Administrator {
     }
 
     public ArrayList<Teacher> matchTeachersToStudentCourse(StudentCourseRequirements course) {
-        Iterator<Teacher> freeTeachers = teachers.getFilteredTeachersOr(TeacherStore.Unassigned); // Get free Teachers
+        //Iterator<Teacher> freeTeachers = teachers.getFilteredTeachersOr(TeacherStore.Unassigned); // Get free Teachers
+        var freeTeachers = teachers.getData();
         ArrayList<Teacher> validTeachers = new ArrayList<>();
-        while (freeTeachers.hasNext()) {
-            var teach = freeTeachers.next();
-            var countSkill = teach.getTeacherSkillSet().stream().filter(skill -> course.getSkillsRequired().contains(skill)).count();
+        for (var teach : freeTeachers) {
+            var countSkill = teach.getTeacherSkillSet().stream().filter(skill -> course.getSkillSet().contains(skill)).count();
             if (countSkill > 4) {
                 validTeachers.add(teach);
             }
@@ -118,11 +118,22 @@ public class Administrator {
 
     public void run() {
         System.out.println("Select Student Course to Assign Teacher: ");
+        Teacher t = new Teacher("j",2,"h");
+        var a = new ArrayList<String>();
+        a.add("a");
+        a.add("b");
+        a.add("c");
+        a.add("d");
+        a.add("e");
+        a.add("f");
+        t.setTeacherSkillSet(a);
+        t.hasCompletedTraining = true;
+        teachers.add(t);
         int idx = 0;
-        var unassignedCourses = studentCourses.getFilteredStudentCourses(StudentCourseStore.Unassigned);
+        //var unassignedCourses = studentCourses.getFilteredStudentCourses(StudentCourseStore.Unassigned);
+        List<StudentCourseRequirements> uassignedCourses = studentCourses.getData();
         var uCourse = new ArrayList<StudentCourseRequirements>();
-        while(unassignedCourses.hasNext()){
-            var course = unassignedCourses.next();
+        for(var course: uassignedCourses){
             uCourse.add(course);
             System.out.println("["+ idx +"] " + course.getCourseName());
             idx++;

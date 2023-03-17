@@ -14,7 +14,10 @@ import java.util.UUID;
 abstract class Staff extends Person{
 	private UUID id; //staff id
 	private String title;
-	
+
+	public Staff(){
+		super();
+	}
 	public Staff (String name, int age, String title) {
 		super(name, age);
 		this.setTitle(title);

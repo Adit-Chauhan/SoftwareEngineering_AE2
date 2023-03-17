@@ -35,6 +35,7 @@ public class StudentCourseRequirements extends Course {
 		this.studentCourseDateTime = newCourseDateTime;
 	} 
 
+	@Override
 	// Sets teacher assigned to teach the student course	
 	public void setTeacher(Teacher newTeacher){
 		this.teacher = newTeacher;
@@ -45,15 +46,16 @@ public class StudentCourseRequirements extends Course {
 		/*	GETTERS	*/
 	// NOTE: Class also has getters for course name, description, ID, and skillset inherited from Course abstract class
 
-	// Getter for the date/time scheduled for the student course
-	public TimetableDate getTimetabledDate(){
-		return studentCourseDateTime;
-	}
+
 
 	// Gets teacher assigned to teach the student course	
 	public Teacher getTeacher(){
 		return teacher;
-	} 
+	}
 
+	// Getter for the date/time scheduled for the student course
+	public TimetableDate getStudentCourseDateTime() {
+		return studentCourseDateTime;
+	}
 }
 

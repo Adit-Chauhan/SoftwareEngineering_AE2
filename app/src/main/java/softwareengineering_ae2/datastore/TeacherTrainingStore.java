@@ -3,6 +3,7 @@ package softwareengineering_ae2.datastore;
 import softwareengineering_ae2.CourseClasses.TeacherTrainingCourse;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,6 +17,7 @@ public class TeacherTrainingStore extends BaseStore<TeacherTrainingCourse> {
 
     @Override
     public void add(TeacherTrainingCourse val) {
+        if(localData == null)localData = new ArrayList<>();
         Optional<TeacherTrainingCourse> maybeCourse = localData.stream().filter(c -> c.getCourseID() == val.getCourseID()).findFirst();
         maybeCourse.ifPresent(teacherTrainingCourse -> localData.remove(teacherTrainingCourse));
         localData.add(val);
