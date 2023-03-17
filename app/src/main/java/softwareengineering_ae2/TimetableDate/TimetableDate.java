@@ -1,11 +1,6 @@
 package softwareengineering_ae2.TimetableDate;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
-import java.io.Serializable;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.*;
-
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class TimetableDate {
     int day;

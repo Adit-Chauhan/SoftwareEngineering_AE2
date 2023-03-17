@@ -86,6 +86,7 @@ public class Administrator {
         a.add("e");
         a.add("f");
         t.setTeacherSkillSet(a);
+        t.setTeacherName("mr Gigo");
         t.hasCompletedTraining = true;
         teachers.add(t);
         int idx = 0;
