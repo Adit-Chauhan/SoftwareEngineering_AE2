@@ -12,10 +12,6 @@ import java.io.IOException;
 import java.util.*;
 
 public class Administrator {
-//    int AdminID;
-//    ArrayList<Teacher> allPartTimeTeachingStaff;
-//    ArrayList<StudentCourseRequirements> allStudentCourses;
-//    ArrayList<TeacherTrainingCourse> allTeacherTrainingCourses;
     TeacherStore teachers;
     TeacherTrainingStore teachCourse;
     StudentCourseStore studentCourses;
@@ -26,43 +22,6 @@ public class Administrator {
         studentCourses = StudentCourseStore.getInstance();
     }
 
-//    public void readStudentCourseInfo() {
-//        //::ADIT:: What is this function doing?
-//        // It just reads the data and stores it in references on stack
-//        // all this information cannot be accessed ...
-//        for (StudentCourseRequirements course : StudentCourseStore.getData()) {
-//            int coursID = course.getCourseID();
-//            String courseName = course.getCourseName();
-//            String courseDescription = course.getCourseDescription();
-//            TimetableDate courseDate = course.getTimetabledDate();
-//            Teacher coursePTTeacher = course.getTeacher();
-//        }
-//    }
-//
-//
-//    public void readTeacherTrainingInfo() {
-//        //::ADIT:: Same problem as previous the references just get cleared when the scope ends
-//        for (TeacherTrainingCourse ttc : TeacherTrainingStore.getData()) {
-//            int ttcID = ttc.getID(); //::ADIT:: I made a getter for ID but ID is a static variable It will be same for all
-//            // responses
-//            int tthcClassSize = ttc.getTeacherTrainingClassSize();
-//            ArrayList<TimetableDate> ttcTimes = ttc.getTrainingTimes();
-//            HashSet<String> ttcSkills = ttc.getTaughtSkillSet();
-//        }
-//    }
-//
-//    public void readPartTimeTeacherInfo() {
-//        //::ADIT:: Same problem as previous the references just get cleared when the scope ends
-//        for (Teacher t : TeacherStore.getData()) {
-//            String tName = t.getName();
-//            boolean tTrainingsCompleted = t.getTrainingCompletedStatus();
-//            ArrayList<TimetableDate> tAvailability = t.getTeacherAvailability();
-//            ArrayList<String> tSkillset = t.getTeacherSkillSet();
-//
-//        }
-//    }
-//
-//
     public void matchTeachersToStudentCourse(Course course, ArrayList<Teacher> teacher) {
         for (Teacher t : teacher) {
             int skillcount = 0;
