@@ -19,6 +19,14 @@ public class TimetableDate implements Serializable{
 
     }
 
+    public void setTime(ZonedDateTime time){
+        courseScheduledTime = time;
+    }
+
+    public ZonedDateTime getTime(){
+        return courseScheduledTime;
+    }
+
 
 
 
