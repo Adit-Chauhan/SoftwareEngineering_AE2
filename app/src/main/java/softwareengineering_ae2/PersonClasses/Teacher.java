@@ -4,6 +4,10 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import softwareengineering_ae2.TimetableDate.TimetableDate;
 
 import java.util.ArrayList;
+/**
+ * This class is for containing information of part-time teachers
+ *
+ */
 
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class Teacher extends Staff{
