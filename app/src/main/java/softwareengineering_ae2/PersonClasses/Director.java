@@ -12,6 +12,11 @@ import java.time.ZonedDateTime;
 import java.util.HashSet;
 import java.util.Scanner;
 
+/**
+ * This class represents the director and has a method to creat and add courseRequiremnt.
+ *
+ */
+
 public class Director extends Staff {
 	StudentCourseStore courses;
 	public Director(String n, int a, int id, String title) throws IOException {
@@ -19,6 +24,7 @@ public class Director extends Staff {
 		courses = StudentCourseStore.getInstance();
 	}
 
+	//This method will be called to create a courseRequiement and add it to database.
 	public void addRequirments() {
 		Scanner r = new Scanner(System.in);
 		boolean t = true;

@@ -4,9 +4,15 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
 import java.util.UUID;
 
+/**This class stands for any staff. Various staff with diffrent title will extend this class.
+ *
+ */
+
+
+
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 abstract class Staff extends Person{
-	private UUID id;
+	private UUID id; //staff id
 	private String title;
 	
 	public Staff (String name, int age, String title) {
