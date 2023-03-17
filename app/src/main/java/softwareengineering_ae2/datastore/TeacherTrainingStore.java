@@ -4,8 +4,11 @@ import softwareengineering_ae2.CourseClasses.TeacherTrainingCourse;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class TeacherTrainingStore extends BaseStore<TeacherTrainingCourse> {
     static TeacherTrainingStore inst;
@@ -15,12 +18,13 @@ public class TeacherTrainingStore extends BaseStore<TeacherTrainingCourse> {
         super();
     }
 
+    // Only add new data if new entry
     @Override
     public void add(TeacherTrainingCourse val) {
         if(localData == null)localData = new ArrayList<>();
         Optional<TeacherTrainingCourse> maybeCourse = localData.stream().filter(c -> c.getCourseID() == val.getCourseID()).findFirst();
-        maybeCourse.ifPresent(teacherTrainingCourse -> localData.remove(teacherTrainingCourse));
-        localData.add(val);
+        maybeCourse.ifPresent(teacherTrainingCourse -> localData.remove(teacherTrainingCourse)); // Remove if entry exists
+        localData.add(val); // add new entry
     }
 
     public static TeacherTrainingStore getInstance() throws IOException {
@@ -42,17 +46,14 @@ public class TeacherTrainingStore extends BaseStore<TeacherTrainingCourse> {
     public void update() {
         data().setTeacherCourse(localData);
     }
-/*
- * TODO: Include if implemented in Courses
- *
-    public Iterator<CourseWork.TeacherTrainingCourse> getFilteredTeachers(int filterSettings){
-        Stream<CourseWork.TeacherTrainingCourse> v =  Stream.empty();
+
+    // These are not being used in the program but where made in consideration that if a Database is used it is more
+    // efficient to pass simple checks such as these to Database Queries
+    public List<TeacherTrainingCourse> getFilteredTeachers(int filterSettings){
+        Stream<TeacherTrainingCourse> v =  Stream.empty();
         if ((filterSettings & HasSpace) == HasSpace) Stream.concat(v, getAllTeacherCourses().stream().filter(s -> s.getSpacesLeft()>0));
 
         if((filterSettings & Full) == Full) Stream.concat(v,getAllTeacherCourses().stream().filter(s->s.getSpacesLeft() == 0));
-        v = v.distinct(); // Should not be possible in this case but for security
-        return v.iterator();
+        return v.toList();
     }
-
- */
 }

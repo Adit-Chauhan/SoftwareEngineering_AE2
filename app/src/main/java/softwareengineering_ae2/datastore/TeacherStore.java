@@ -1,11 +1,9 @@
 package softwareengineering_ae2.datastore;
 
-import softwareengineering_ae2.CourseClasses.TeacherTrainingCourse;
 import softwareengineering_ae2.PersonClasses.Teacher;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
@@ -21,12 +19,13 @@ public class TeacherStore extends BaseStore<Teacher> {
         super();
     }
 
+    // Only add new data if new entry
     @Override
     public void add(Teacher val) {
         if(localData == null)localData = new ArrayList<>();
         Optional<Teacher> maybeTeacher = localData.stream().filter(c -> c.getId() == val.getId()).findFirst();
-        maybeTeacher.ifPresent(teacher -> localData.remove(teacher));
-        localData.add(val);
+        maybeTeacher.ifPresent(teacher -> localData.remove(teacher)); // remove old entry
+        localData.add(val); // Add new entry
     }
 
     public static TeacherStore getInstance() throws IOException {
@@ -34,7 +33,9 @@ public class TeacherStore extends BaseStore<Teacher> {
         return inst;
     }
 
-    public Iterator<Teacher> getFilteredTeachersOr(int filterSettings){
+    // These are not being used in the program but where made in consideration that if a Database is used it is more
+    // efficient to pass simple checks such as these to Database Queries
+    public List<Teacher> getFilteredTeachersOr(int filterSettings){
         Stream<Teacher> v =  Stream.empty();
         if ((filterSettings & Unassigned) == Unassigned) Stream.concat(v,getData().stream().filter(s -> !s.isAssigned()));
         if((filterSettings & Assigned) == Assigned)      Stream.concat(v,getData().stream().filter(Teacher::isAssigned));
@@ -42,10 +43,12 @@ public class TeacherStore extends BaseStore<Teacher> {
         if((filterSettings & Untrained) == Untrained)    Stream.concat(v,getData().stream().filter(s-> !s.getTrainingCompletedStatus()));
 
         v = v.distinct(); // Remove common
-        return v.iterator();
+        return v.toList();
     }
 
-    public Iterator<Teacher> getFilteredTeachersAnd(int filterSettings){
+    // These are not being used in the program but where made in consideration that if a Database is used it is more
+    // efficient to pass simple checks such as these to Database Queries
+    public List<Teacher> getFilteredTeachersAnd(int filterSettings){
         Stream<Teacher> v = getData().stream();
         if ((filterSettings & Unassigned) == Unassigned) v=v.filter(s -> !s.isAssigned());
 
@@ -55,13 +58,12 @@ public class TeacherStore extends BaseStore<Teacher> {
 
         if((filterSettings & Untrained) == Untrained)    v=v.filter(s-> !s.getTrainingCompletedStatus());
 
-        return v.iterator();
+        return v.toList();
     }
 
     @Override
     public List<Teacher> getData() {
         if (localData == null)localData = data().getTeachers();
-
         return localData;
     }
 
